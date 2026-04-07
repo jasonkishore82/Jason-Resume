@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jason Kishore Mohan Raj — AI/ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f7;
+    --card: #ffffff;
+    --card2: #fbfbfd;
+    --border: rgba(0,0,0,0.08);
+    --shadow: 0 2px 16px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-hover: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    --accent: #0071e3;
+    --accent-soft: rgba(0,113,227,0.08);
+    --accent2: #34c759;
+    --accent2-soft: rgba(52,199,89,0.1);
+    --orange: #ff9500;
+    --orange-soft: rgba(255,149,0,0.1);
+    --text: #1d1d1f;
+    --secondary: #6e6e73;
+    --tertiary: #aeaeb2;
+    --heading: #1d1d1f;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { font-size: 15px; -webkit-font-smoothing: antialiased; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  .page {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── HEADER CARD ── */
+  .header-card {
+    background: var(--card);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 44px 48px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: center;
+    animation: rise 0.5s cubic-bezier(.22,.68,0,1.2) both;
+    border: 1px solid var(--border);
+  }
+
+  .name-block {}
+
+  .role-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+
+  .role-pill::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--heading);
+    letter-spacing: -0.02em;
+    margin-bottom: 12px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .tagline {
+    font-size: 0.88rem;
+    color: var(--secondary);
+    font-weight: 300;
+    max-width: 440px;
+    line-height: 1.65;
+  }
+
+  /* contact pills */
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  .contact-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 6px 14px 6px 10px;
+    font-size: 0.72rem;
+    color: var(--secondary);
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+
+  .contact-pill:hover {
+    background: var(--accent-soft);
+    border-color: rgba(0,113,227,0.2);
+    color: var(--accent);
+  }
+
+  .contact-pill svg {
+    width: 14px; height: 14px;
+    fill: currentColor;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  /* ── STAT BAR ── */
+  .stat-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+    animation: rise 0.5s 0.1s cubic-bezier(.22,.68,0,1.2) both;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 24px 28px;
+    text-align: center;
+    transition: box-shadow 0.25s, transform 0.25s;
+  }
+
+  .stat-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+  }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    color: var(--heading);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .stat-num span { color: var(--accent); }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--secondary);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── BODY GRID ── */
+  .body-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 20px;
+    align-items: start;
+  }
+
+  /* ── GENERIC CARD ── */
+  .card {
+    background: var(--card);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 32px;
+    margin-bottom: 20px;
+    animation: rise 0.5s cubic-bezier(.22,.68,0,1.2) both;
+  }
+
+  .card:nth-child(1) { animation-delay: 0.15s; }
+  .card:nth-child(2) { animation-delay: 0.22s; }
+  .card:nth-child(3) { animation-delay: 0.29s; }
+  .card:nth-child(4) { animation-delay: 0.36s; }
+
+  .section-title {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* ── SUMMARY ── */
+  .summary-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--secondary);
+    font-style: italic;
+  }
+
+  /* ── ENTRY ── */
+  .entry {
+    padding: 20px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--card2);
+    margin-bottom: 14px;
+    transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+  }
+
+  .entry:last-child { margin-bottom: 0; }
+
+  .entry:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px);
+    border-color: rgba(0,113,227,0.18);
+  }
+
+  .entry-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 4px;
+    flex-wrap: wrap;
+  }
+
+  .entry-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--heading);
+    line-height: 1.3;
+  }
+
+  .date-badge {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--orange);
+    background: var(--orange-soft);
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .entry-org {
+    font-size: 0.75rem;
+    color: var(--secondary);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .entry-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .entry-bullets li {
+    font-size: 0.8rem;
+    color: var(--secondary);
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .entry-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: 0.6;
+  }
+
+  .tech-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 14px;
+  }
+
+  .tech-chip {
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.02em;
+  }
+
+  /* status badges */
+  .status-wip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--orange);
+    background: var(--orange-soft);
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  .status-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: var(--accent2);
+    background: var(--accent2-soft);
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 4px;
+    vertical-align: middle;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+
+  a.status-live:hover { opacity: 0.75; cursor: pointer; }
+
+  .status-wip::before, .status-live::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    animation: pulse 1.4s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+
+  /* ── SIDEBAR CARDS ── */
+  .sidebar-card {
+    background: var(--card);
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 28px;
+    margin-bottom: 20px;
+    animation: rise 0.5s cubic-bezier(.22,.68,0,1.2) both;
+  }
+
+  .sidebar-card:nth-child(1) { animation-delay: 0.18s; }
+  .sidebar-card:nth-child(2) { animation-delay: 0.26s; }
+  .sidebar-card:nth-child(3) { animation-delay: 0.34s; }
+
+  /* education */
+  .edu-item {
+    padding: 16px;
+    border-radius: 12px;
+    background: var(--card2);
+    border: 1px solid var(--border);
+    margin-bottom: 12px;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .edu-item:last-child { margin-bottom: 0; }
+  .edu-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+
+  .edu-degree {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--heading);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .edu-school {
+    font-size: 0.72rem;
+    color: var(--secondary);
+    margin-bottom: 10px;
+  }
+
+  .edu-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .edu-tag {
+    font-size: 0.62rem;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+
+  .edu-tag.green { color: var(--accent2); background: var(--accent2-soft); }
+  .edu-tag.blue { color: var(--accent); background: var(--accent-soft); }
+  .edu-tag.grey { color: var(--secondary); background: var(--bg); border: 1px solid var(--border); }
+
+  /* skills */
+  .skill-group {
+    margin-bottom: 16px;
+  }
+
+  .skill-group:last-child { margin-bottom: 0; }
+
+  .skill-group-label {
+    font-size: 0.63rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tertiary);
+    margin-bottom: 7px;
+  }
+
+  .skill-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .skill-chip {
+    font-size: 0.68rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    transition: all 0.18s;
+    cursor: default;
+  }
+
+  .skill-chip:hover {
+    background: var(--accent-soft);
+    border-color: rgba(0,113,227,0.2);
+    color: var(--accent);
+  }
+
+  /* achievement */
+  .achieve-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .achieve-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .achieve-item:first-child { padding-top: 0; }
+
+  .achieve-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .achieve-icon.gold { background: rgba(255,149,0,0.12); }
+  .achieve-icon.blue { background: var(--accent-soft); }
+  .achieve-icon.green { background: var(--accent2-soft); }
+
+  .achieve-text {
+    font-size: 0.78rem;
+    color: var(--secondary);
+    line-height: 1.55;
+  }
+
+  .achieve-text strong { color: var(--heading); font-weight: 600; }
+
+  /* ── ANIM ── */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 780px) {
+    .header-card { grid-template-columns: 1fr; }
+    .contacts { align-items: flex-start; }
+    .stat-bar { grid-template-columns: 1fr 1fr; }
+    .body-grid { grid-template-columns: 1fr; }
+    .page { padding: 24px 16px 60px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .card, .sidebar-card, .header-card, .stat-card, .entry, .edu-item {
+      box-shadow: none !important;
+      transform: none !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header-card">
+    <div class="name-block">
+      <div class="role-pill">AI / ML Engineer</div>
+      <h1>Jason <em>Kishore</em><br>Mohan Raj</h1>
+      <p class="tagline">MSc Distinction · Queen Mary University of London · Autonomous agentic systems, RAG frameworks & production-grade ML deployments.</p>
+    </div>
+    <div class="contacts">
+      <a class="contact-pill" href="tel:+919003575576">
+        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        +91 9003575576
+      </a>
+      <a class="contact-pill" href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#106;&#97;&#115;&#111;&#110;&#107;&#105;&#115;&#104;&#111;&#114;&#101;&#56;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        &#106;&#97;&#115;&#111;&#110;&#107;&#105;&#115;&#104;&#111;&#114;&#101;&#56;&#50;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;
+      </a>
+      <a class="contact-pill" href="https://github.com/jasonkishore82" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a class="contact-pill" href="https://www.linkedin.com/in/jason-kishore-mohan-raj-43b707361/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a class="contact-pill" href="https://huggingface.co/JasonKishore007" target="_blank" rel="noopener">
+        <svg viewBox="0 0 36 36" fill="currentColor"><text y="28" font-size="28">🤗</text></svg>
+        Hugging Face
+      </a>
+    </div>
+  </div>
+
+  <!-- STAT BAR -->
+  <div class="stat-bar">
+    <div class="stat-card">
+      <div class="stat-num">MSc<span>·</span></div>
+      <div class="stat-label">Distinction — Queen Mary University of London</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">70<span>%</span></div>
+      <div class="stat-label">Query resolution uplift</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">5<span>+</span></div>
+      <div class="stat-label">Shipped public AI products</div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body-grid">
+    <main>
+
+      <!-- SUMMARY -->
+      <div class="card">
+        <div class="section-title">Profile</div>
+        <p class="summary-text">AI/ML Engineer with a rigorous "build-and-ship" philosophy — independently engineering autonomous agentic systems and RAG frameworks from prototype to publicly deployed products, combining academic distinction with hands-on production experience.</p>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="card">
+        <div class="section-title">Experience</div>
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Intern — AI / NLP Engineer</div>
+            <div class="date-badge">Apr – Oct 2025</div>
+          </div>
+          <div class="entry-org">OASYS Cybernetics · Remote</div>
+          <ul class="entry-bullets">
+            <li>Built HR automation chatbot features using Rasa: NLU dataset creation, intent & entity modelling, dialogue management, and external API integration.</li>
+            <li>Delivered production-ready NLU pipelines with end-to-end testing, cutting average HR query resolution time by 70%.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">Rasa</span>
+            <span class="tech-chip">NLU</span>
+            <span class="tech-chip">FastAPI</span>
+            <span class="tech-chip">Intent Modelling</span>
+            <span class="tech-chip">Dialogue Management</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- INDEPENDENT PROJECTS -->
+      <div class="card">
+        <div class="section-title">Independent Projects</div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">
+              Agentic World Simulation
+              <span class="status-wip">WIP</span>
+              <a class="status-live" href="https://jasonkishore82.github.io/erox01/" target="_blank" rel="noopener">Live Preview ↗</a>
+            </div>
+            <div class="date-badge">Lead Developer</div>
+          </div>
+          <ul class="entry-bullets">
+            <li>Architecting a 3D multi-agent environment where independent AI agents collaborate to solve complex, multi-stage tasks in real time — no predefined scripting.</li>
+            <li>Engineering a "Creator Agent" capable of live self-evolution — autonomously rewriting its own reasoning logic and the simulation's codebase mid-run.</li>
+            <li>Local reasoning stack pairing Gemma 4 (world-state logic) with Qwen3-Coder-Next for real-time Three.js code generation and hot injection.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">Three.js</span>
+            <span class="tech-chip">Gemma 4</span>
+            <span class="tech-chip">Qwen3-Coder</span>
+            <span class="tech-chip">Multi-Agent</span>
+            <span class="tech-chip">Self-Evolution</span>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">BIY — Agentic Startup Solution <a class="status-live" href="https://jasonkishore007-biy.hf.space/" target="_blank" rel="noopener">Hugging Face ↗</a></div>
+            <div class="date-badge">Sole Developer</div>
+          </div>
+          <ul class="entry-bullets">
+            <li>Autonomous multi-agent system converting a raw user idea into a fully structured startup blueprint — market analysis, technical architecture, strategic roadmap — without manual intervention.</li>
+            <li>Deployed publicly on Hugging Face Spaces with containerised infrastructure, demonstrating production-level API design.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">LangChain</span>
+            <span class="tech-chip">Multi-Agent</span>
+            <span class="tech-chip">Docker</span>
+            <span class="tech-chip">Hugging Face Spaces</span>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">
+              DocZPeak — RAG Chatbot on Uploaded PDFs
+              <a class="status-live" href="https://jasonkishore007-doczpeak.hf.space/" target="_blank" rel="noopener">Hugging Face ↗</a>
+            </div>
+            <div class="date-badge">Sole Developer</div>
+          </div>
+          <ul class="entry-bullets">
+            <li>Built an end-to-end RAG-powered chat application that lets users upload any PDF and instantly query its contents through a natural-language interface — no keyword search required.</li>
+            <li>Engineered a full document ingestion pipeline covering parsing, chunking, embedding, and vector retrieval to deliver precise, context-aware answers grounded in the uploaded document.</li>
+            <li>Deployed publicly on Hugging Face Spaces with a clean, accessible UI — demonstrating production-ready API design and containerised infrastructure.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">RAG</span>
+            <span class="tech-chip">LlamaIndex</span>
+            <span class="tech-chip">Embeddings</span>
+            <span class="tech-chip">PDF Parsing</span>
+            <span class="tech-chip">Hugging Face Spaces</span>
+            <span class="tech-chip">Gradio</span>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">RAG-Powered ML Data Pipeline Dashboard</div>
+            <div class="date-badge">Sole Developer</div>
+          </div>
+          <ul class="entry-bullets">
+            <li>Full-stack ML pipeline dashboard with an integrated RAG chat interface for natural-language querying of large technical report corpora.</li>
+            <li>Custom chunking, embedding, and retrieval workflows enabling precise, context-aware document search far beyond keyword matching.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">FastAPI</span>
+            <span class="tech-chip">LlamaIndex</span>
+            <span class="tech-chip">Gradio</span>
+            <span class="tech-chip">Embeddings</span>
+            <span class="tech-chip">RAG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACADEMIC -->
+      <div class="card">
+        <div class="section-title">Academic &amp; Research Projects</div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Credit &amp; GDP Forecasting — Europe</div>
+            <div class="date-badge">2024 – 2025</div>
+          </div>
+          <div class="entry-org">Queen Mary University of London · MSc Research</div>
+          <ul class="entry-bullets">
+            <li>Forecasted macroeconomic trends across multiple European countries using regression, ARIMA, and advanced time-series techniques.</li>
+            <li>Publication-quality analysis with uncertainty quantification and scenario sensitivity testing.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">ARIMA</span>
+            <span class="tech-chip">Regression</span>
+            <span class="tech-chip">Time-Series</span>
+            <span class="tech-chip">Python</span>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">Emotion Classification from Facial Images</div>
+            <div class="date-badge">2022 – 2023</div>
+          </div>
+          <div class="entry-org">Panimalar Engineering College · B.E. Final Year</div>
+          <ul class="entry-bullets">
+            <li>CNN-based emotion recognition model classifying facial expressions across seven emotion classes with high accuracy.</li>
+            <li>Real-time inference via live video feed pipeline using OpenCV and a Flask API backend.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">TensorFlow</span>
+            <span class="tech-chip">OpenCV</span>
+            <span class="tech-chip">CNN</span>
+            <span class="tech-chip">Flask</span>
+          </div>
+        </div>
+
+        <div class="entry">
+          <div class="entry-top">
+            <div class="entry-title">AI Chatbot for Banking Support</div>
+            <div class="date-badge">2021 – 2022</div>
+          </div>
+          <div class="entry-org">Panimalar Engineering College</div>
+          <ul class="entry-bullets">
+            <li>End-to-end banking support chatbot using IBM Watson Assistant and Flask, reducing manual customer response effort by 70%.</li>
+            <li>NLU intent classification, entity extraction, and a REST API backend for live account query handling.</li>
+          </ul>
+          <div class="tech-row">
+            <span class="tech-chip">IBM Watson</span>
+            <span class="tech-chip">NLU</span>
+            <span class="tech-chip">Flask</span>
+            <span class="tech-chip">REST API</span>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside>
+
+      <!-- EDUCATION -->
+      <div class="sidebar-card">
+        <div class="section-title">Education</div>
+
+        <div class="edu-item">
+          <div class="edu-degree">MSc Artificial Intelligence &amp; Machine Learning</div>
+          <div class="edu-school">Queen Mary University of London, UK</div>
+          <div class="edu-tags">
+            <span class="edu-tag green">Distinction</span>
+            <span class="edu-tag blue">2024 – 2025</span>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-degree">B.E. Electronics &amp; Communication Engineering</div>
+          <div class="edu-school">Panimalar Engineering College, India</div>
+          <div class="edu-tags">
+            <span class="edu-tag grey">CGPA 8.8 / 10</span>
+            <span class="edu-tag grey">Top 10%</span>
+            <span class="edu-tag blue">2019 – 2023</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="sidebar-card">
+        <div class="section-title">Skills</div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Languages &amp; Data</div>
+          <div class="skill-chips">
+            <span class="skill-chip">Python</span>
+            <span class="skill-chip">SQL</span>
+            <span class="skill-chip">pandas</span>
+            <span class="skill-chip">NumPy</span>
+            <span class="skill-chip">Excel</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">AI / ML Frameworks</div>
+          <div class="skill-chips">
+            <span class="skill-chip">scikit-learn</span>
+            <span class="skill-chip">TensorFlow</span>
+            <span class="skill-chip">PyTorch</span>
+            <span class="skill-chip">Hugging Face</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Agentic &amp; LLM</div>
+          <div class="skill-chips">
+            <span class="skill-chip">LangChain</span>
+            <span class="skill-chip">LlamaIndex</span>
+            <span class="skill-chip">CrewAI</span>
+            <span class="skill-chip">AutoGen</span>
+            <span class="skill-chip">Ollama</span>
+            <span class="skill-chip">Gemma 4</span>
+            <span class="skill-chip">Qwen3</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Claude &amp; APIs</div>
+          <div class="skill-chips">
+            <span class="skill-chip">Claude API</span>
+            <span class="skill-chip">Tool Use</span>
+            <span class="skill-chip">Function Calling</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">RAG &amp; NLP</div>
+          <div class="skill-chips">
+            <span class="skill-chip">RAG Pipelines</span>
+            <span class="skill-chip">Embeddings</span>
+            <span class="skill-chip">Chunking</span>
+            <span class="skill-chip">Rasa NLU</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Deployment / MLOps</div>
+          <div class="skill-chips">
+            <span class="skill-chip">FastAPI</span>
+            <span class="skill-chip">Flask</span>
+            <span class="skill-chip">Docker</span>
+            <span class="skill-chip">MLflow</span>
+            <span class="skill-chip">W&amp;B</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-label">Computer Vision</div>
+          <div class="skill-chips">
+            <span class="skill-chip">OpenCV</span>
+            <span class="skill-chip">CNN</span>
+            <span class="skill-chip">Three.js</span>
+            <span class="skill-chip">Gradio</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACHIEVEMENTS -->
+      <div class="sidebar-card">
+        <div class="section-title">Highlights</div>
+
+        <div class="achieve-item">
+          <div class="achieve-icon gold">🏅</div>
+          <div class="achieve-text"><strong>Distinction</strong> in MSc AI &amp; ML — highest classification at Queen Mary University of London (2025)</div>
+        </div>
+        <div class="achieve-item">
+          <div class="achieve-icon blue">🎓</div>
+          <div class="achieve-text"><strong>Top 10%</strong> of cohort · CGPA 8.8 / 10 at Panimalar Engineering College (2023)</div>
+        </div>
+        <div class="achieve-item">
+          <div class="achieve-icon green">⚡</div>
+          <div class="achieve-text"><strong>70% reduction</strong> in HR query resolution time — production NLU chatbot at OASYS Cybernetics</div>
+        </div>
+        <div cla
